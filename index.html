@@ -242,7 +242,7 @@
   </div>
 </section> -->
 
-<!-- Results Comparison across Different Levels -->
+<!-- Results Comparison across Different Levels
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -266,7 +266,7 @@
       </div>
     </div>
   </div>
-</section>
+</section>-->
 
 
 
@@ -292,7 +292,6 @@
 
 
 
-<!-- Results Comparison across Different Levels -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -308,10 +307,10 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
-<!-- Video Comparison -->
+
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -325,24 +324,60 @@
               <div class="level-group">
                 <button class="btn level-btn" id="level1_button" onclick="switchLevel('level1')">Level 1</button>
                 <div class="sub-buttons" id="level1_sub_buttons" style="display: none;">
-                  <button class="btn sub-btn" id="level1_train_button" onclick="switchVideo('level1', 'train')">Train</button>
-                  <button class="btn sub-btn" id="level1_test_button" onclick="switchVideo('level1', 'test')">Test</button>
+                  <div>
+                    <label for="level1_train_test">Train/Test:</label>
+                    <select id="level1_train_test" class="dropdown" onchange="switchVideoWithLocation('level1')">
+                      <option value="train">Train</option>
+                      <option value="test">Test</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="level1_location">Location:</label>
+                    <select id="level1_location" class="dropdown" onchange="switchVideoWithLocation('level1')">
+                      <option value="location1">Location 1</option>
+                      <option value="location2">Location 2</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <!-- Level 2 -->
               <div class="level-group">
                 <button class="btn level-btn" id="level2_button" onclick="switchLevel('level2')">Level 2</button>
                 <div class="sub-buttons" id="level2_sub_buttons" style="display: none;">
-                  <button class="btn sub-btn" id="level2_train_button" onclick="switchVideo('level2', 'train')">Train</button>
-                  <button class="btn sub-btn" id="level2_test_button" onclick="switchVideo('level2', 'test')">Test</button>
+                  <div>
+                    <label for="level2_train_test">Train/Test:</label>
+                    <select id="level2_train_test" class="dropdown" onchange="switchVideoWithLocation('level2')">
+                      <option value="train">Train</option>
+                      <option value="test">Test</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="level2_location">Location:</label>
+                    <select id="level2_location" class="dropdown" onchange="switchVideoWithLocation('level2')">
+                      <option value="location1">Location 1</option>
+                      <option value="location2">Location 2</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <!-- Level 3 -->
               <div class="level-group">
                 <button class="btn level-btn" id="level3_button" onclick="switchLevel('level3')">Level 3</button>
                 <div class="sub-buttons" id="level3_sub_buttons" style="display: none;">
-                  <button class="btn sub-btn" id="level3_train_button" onclick="switchVideo('level3', 'train')">Train</button>
-                  <button class="btn sub-btn" id="level3_test_button" onclick="switchVideo('level3', 'test')">Test</button>
+                  <div>
+                    <label for="level3_train_test">Train/Test:</label>
+                    <select id="level3_train_test" class="dropdown" onchange="switchVideoWithLocation('level3')">
+                      <option value="train">Train</option>
+                      <option value="test">Test</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="level3_location">Location:</label>
+                    <select id="level3_location" class="dropdown" onchange="switchVideoWithLocation('level3')">
+                      <option value="location1">Location 1</option>
+                      <option value="location2">Location 2</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
@@ -353,7 +388,7 @@
             </div>
             <!-- Video Player -->
             <video muted autoplay loop style="height: 1200px; width: auto;" controls id="videoPlayer">
-              <source src="./static/videos/level1_train.mp4" type="video/mp4">
+              <source src="./static/videos/level1_train_location1.mp4" type="video/mp4">
             </video>
           </center>
           <!-- JavaScript -->
@@ -361,56 +396,34 @@
             // Initialize: Show Level 1 sub-buttons and set active states
             document.getElementById('level1_sub_buttons').style.display = 'block';
             document.getElementById('level1_button').classList.add('active');
-            document.getElementById('level1_train_button').classList.add('active');
 
-            // Level descriptions
             const levelDescriptions = {
               level1: "Translation-only experiment uses train and test traversal on different lanes.",
               level2: "Rotation-only uses the first three and the last three cameras for training, and two side cameras for testing.",
               level3: "Translation + rotation experiment uses train and test traversals with significantly different trajectories."
             };
+
             function switchLevel(level) {
-              // Update level description
               const descriptionDiv = document.getElementById('levelDescription');
               descriptionDiv.innerHTML = `<p>${levelDescriptions[level]}</p>`;
 
-              // Hide all sub-buttons
-              document.querySelectorAll('.sub-buttons').forEach(function(subButtons) {
-                subButtons.style.display = 'none';
-              });
-              // Remove 'active' class from all level buttons
-              document.querySelectorAll('.level-btn').forEach(function(btn) {
-                btn.classList.remove('active');
-              });
-              // Add 'active' class to the selected level button
+              document.querySelectorAll('.sub-buttons').forEach(subButtons => subButtons.style.display = 'none');
+              document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
               document.getElementById(level + '_button').classList.add('active');
-              // Show sub-buttons for the selected level
               document.getElementById(level + '_sub_buttons').style.display = 'block';
-              // Reset sub-button active states
-              document.querySelectorAll('.sub-btn').forEach(function(btn) {
-                btn.classList.remove('active');
-              });
-              // Set default sub-button as active
-              var defaultSubBtn = document.getElementById(level + '_train_button');
-              defaultSubBtn.classList.add('active');
-              // Switch to the default video
-              switchVideo(level, 'train');
+
+              switchVideoWithLocation(level);
             }
 
-            function switchVideo(level, type) {
-              // Remove 'active' class from all sub-buttons
-              document.querySelectorAll('.sub-btn').forEach(function(btn) {
-                btn.classList.remove('active');
-              });
-              // Add 'active' class to the selected sub-button
-              document.getElementById(level + '_' + type + '_button').classList.add('active');
-              // Update video source
+            function switchVideoWithLocation(level) {
+              const trainTest = document.getElementById(level + '_train_test').value;
+              const location = document.getElementById(level + '_location').value;
               const videoPlayer = document.getElementById('videoPlayer');
-              videoPlayer.src = './static/videos/' + level + '_' + type + '.mp4';
+              videoPlayer.src = `./static/videos/${level}_${trainTest}_${location}.mp4`;
               videoPlayer.play();
             }
           </script>
-          <!-- Add CSS for button styles if necessary -->
+          <!-- Add CSS for dropdowns -->
           <style>
             .btn.active {
               background-color: #3273dc;
@@ -428,9 +441,10 @@
             .sub-buttons {
               margin-top: 5px;
             }
-            .sub-btn {
+            .dropdown {
               margin-top: 5px;
-              width: 100px;
+              padding: 5px;
+              font-size: 1rem;
             }
             .level-description {
               margin-bottom: 15px;
