@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FusionSense: Bridging Common Sense, Vision, and Touch for Robust Sparse-View Reconstruction">
+  <meta name="keywords" content="Tactile Sensing, 3D Gaussian, Sparse-View Reconstruction">     
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EUVS Benchmark</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/copy2clipboard.js"></script>
+  <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+  
+  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+</head>
+
+
+<body>
+
+<!-- Navigation bar. -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <div class="container is-max-desktop">
+
+    <!-- Lab logo. Will stay here even if view from mobile -->
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://ai4ce.github.io/" target="_blank" rel="noopener noreferrer">
+        <img src="./static/images/ai4ce_new_linear_notext.svg" alt="AI4CE Lab" style="height: 2.0rem;">
+      </a>
+      <a role="button" onclick="this.classList.toggle('is-active');document.querySelector('#'+this.dataset.target).classList.toggle('is-active');" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <!-- Will collapse into a "burger" menu on mobile. -->
+    <div id="navbarBasicExample" class="navbar-menu">
+
+      <div class="navbar-start">
+        <a class="navbar-item" href="https://www.nyu.edu/" target="_blank">
+          <img src="./static/images/NYU_Long_RGB_Color.png" alt="NYU Logo" style="height: 2.0rem;">
+        </a>
+      </div>
+      
+
+      <div class="navbar-end">
+        <!-- After accepted, add conference logo here -->
+        <!-- <a class="navbar-item" href="https://cvpr.thecvf.com/Conferences/2024" target="_blank" rel="noopener noreferrer">
+            <img src="img/logo/logo-cvpr.png" alt="CVPR 2024" style="height: 2.0rem;">
+        </a> -->
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://ai4ce.github.io/DeepExplorer/">
+              DeepExplorer
+            </a>
+            <a class="navbar-item" href="https://ai4ce.github.io/EgoPAT3Dv2/">
+              EgoPAT3Dv2
+            </a>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+
+  </div>
+</nav>
+
+<!-- Title and authors. -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Extrapolated Urban View Synthesis Benchmark</h1>
+          <!-- <div class="column is-full_width">
+            <h2 class="title is-4"><a href="https://2025.ieee-icra.org">ICRA 2025 (Under Review)</a></h2>
+          </div> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://irvingf7.github.io/">Xiangyu Han*</a><sup>1,</sup><sup> 3</sup>,</span>
+            <span class="author-block">
+              <a href="">Zhen Jia*</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://sites.google.com/site/boyilics/">Boyi Li</a><sup>2</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.cornell.edu/~yanwang/">Yan Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.borisivanovic.com/">Boris Ivanovic</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://yurongyou.com">Yurong You</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://lingjie0206.github.io/">Lingjie Liu</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://yuewang.xyz">Yue Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://web.stanford.edu/~pavone/">Marco Pavone</a><sup>2</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=YeG8ZM0AAAAJ">Chen Feng</a><sup>1</sup>,
+            </span>
+            <span class="author-block"></span>
+              <a href="https://yimingli-page.github.io">Yiming Li</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> New York University, </span>
+            <span class="author-block"><sup>2</sup> NVIDIA Research, </span>
+            <span class="author-block"><sup>3</sup> University of Pennsylvania </span>
+            <br>
+            <span class="author-block"><sup>*</sup> Equal Contribution </span>
+          </div>
+
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                 <!-- add here later. -->
+                <a href=""                
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- <span class="link-block"> -->
+                <!-- add here later. -->
+               <!-- <a href=""                    
+                  class="external-link button is-normal is-rounded is-dark">
+                 <span class="icon">
+                     <i class="fas fa-camera"></i>
+                 </span>
+                 <span>Appendix</span>
+               </a> -->
+             <!-- </span> -->
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://huggingface.co/datasets/ai4ce/EgoPAT3Dv2"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser. -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width teaser no-margin">
+        
+        <h2 class="title is-3">TLDR</h2>
+        <p style="font-size: 20px; background-color: #8b00e13b;">
+          Urban view synthesis has focused on <b>interpolated</b> poses; we provide <b>real-world data</b> to enable evaluating <b>extrapolated</b> poses.
+        </p>
+        <br>
+        <!-- <div class="sliders-container">
+          <div class="slider-wrapper">
+            <h2>Novel View Synthesis (RGB) </h2>
+            <div id="trans_rgb"></div>
+          </div>
+          <div class="slider-wrapper">
+            <h2>Object Reconstruction (RGB)</h2>
+            <div id="trans_object"></div>
+          </div>
+        </div>
+        <br> -->
+        <!-- depth and normal sliders -->
+        <!-- <div class="sliders-container">
+          <div class="slider-wrapper">
+            <h2>Novel View Synthesis (Depth) </h2>
+            <div id="trans_depth"></div>
+          </div>
+          <div class="slider-wrapper">
+            <h2>Novel View Synthesis (Normal)</h2>
+            <div id="trans_normal"></div>
+          </div>
+        </div> -->
+
+        <!-- <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+        <script src="./static/js/juxtapose-slider.js"></script> Include your slider.js file -->
+        <div id="Overview">
+          <img src="./static/images/Teaser.png" style="width: 45vw; min-width: 330px;" alt="Overview Image"> 
+        </div>
+        <!-- <script>
+          // Slider configurations
+          const sliders = [
+            {
+              elementId: '#trans_rgb',
+              images: [
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_RGB_22.png',
+                  label: 'FusionSense',
+                },
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_RGB_22.png',
+                  label: 'DN-Splatter',
+                }
+              ],
+              options: sliderOptions // You can reference the options defined in slider.js if needed
+            },
+            {
+              elementId: '#trans_object',
+              images: [
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_obj_7.jpg',
+                  label: 'FusionSense',
+                },
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/GO_trans_obj_7.png',
+                  label: 'GaussianObject',
+                }
+              ],
+              options: sliderOptions // Reference the same or a different options object
+            },
+            {
+              elementId: '#trans_depth',
+              images: [
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_depth_0.png',
+                  label: 'FusionSense',
+                },
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_depth_0.png',
+                  label: 'DN-Splatter',
+                }
+              ],
+              options: sliderOptions // You can reference the options defined in slider.js if needed
+            },
+            {
+              elementId: '#trans_normal',
+              images: [
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/FS_trans_normal_22.png',
+                  label: 'FusionSense',
+                },
+                {
+                  src: './static/images/sliders/transparent_bunny/9_view/DN_trans_normal_22.png',
+                  label: 'DN-Splatter',
+                }
+              ],
+              options: sliderOptions // Reference the same or a different options object
+            }
+          ];
+    
+          // Initialize sliders
+          initializeSliders(sliders);
+        </script> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero summary">
+  <div class="container is-max-desktop">
+    <div class="columns">
+      <div class="column is-full-width summary no-margin">
+        <!-- Abstract Title -->
+        <h2 class="title is-3 has-text-centered" style="margin-top: 30px; margin-bottom: 5px;">Abstract</h2>
+        
+        <!-- Abstract Content -->
+        <p style="font-size: 18px; text-align: left; line-height: 1.8; margin-top: 20px; margin-bottom: 40px;">
+          Photorealistic simulators are essential for the training and evaluation of vision-centric autonomous vehicles (AVs). At their core is Novel View Synthesis (NVS), a crucial capability that generates diverse unseen viewpoints to accommodate the broad and continuous pose distribution of AVs. Recent advances in radiance fields, such as 3D Gaussian Splatting, achieve photorealistic rendering at real-time speeds and have been widely used in modeling large-scale driving scenes. However, their performance is commonly evaluated using an interpolated setup with highly correlated training and test views. In contrast, extrapolation, where test views largely deviate from training views, remains underexplored, limiting progress in generalizable simulation technology. To address this gap, we leverage publicly available AV datasets with multiple traversals, multiple vehicles, and multiple cameras to build the first <b>E</b>xtrapolated <b>U</b>rban <b>V</b>iew <b>S</b>ynthesis (EUVS) benchmark. Meanwhile, we conduct quantitative and qualitative evaluations of state-of-the-art Gaussian Splatting methods across different difficulty levels. Our results show that Gaussian Splatting is prone to overfitting to training views. In addition, incorporating diffusion priors and improving geometry cannot fundamentally improve NVS under large view changes, highlighting the need for more robust approaches. We will release our resources for the community to advance simulation technology for self-driving and urban robotics.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- </section>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Video Results</h2>
+        <div class="content has-text-justified">
+          <center>
+            <!-- Main Level Buttons -->
+            <!-- <button class="btn" id="level1_button" onclick="switchVideo('level1')">Level1</button>
+            <button class="btn" id="level2_button" onclick="switchVideo('level2')">Level2</button>
+            <button class="btn" id="level3_button" onclick="switchVideo('level3')">Level3</button>
+            <br>
+            <br>
+            <!-- Sub Buttons -->
+            <!-- <div id="subButtons" style="display: none;">
+              <button class="btn" id="train_button" onclick="switchSubVideo('train')">Train</button>
+              <button class="btn" id="test_button" onclick="switchSubVideo('test')">Test</button>
+            </div>
+            <br>
+            <video muted autoplay loop style="height: 700px; width: auto;" controls id="videoPlayer">
+              <source src="./static/videos/level1.mp4" type="video/mp4">
+            </video>
+          </center>
+          <script>
+            let currentLevel = 'level1'; // Track the current main level
+
+            document.getElementById('level1_button').classList.add('active');
+
+            function switchVideo(videoSrc) {
+                // Deselect all level buttons
+                document.getElementById('level1_button').classList.remove('active');
+                document.getElementById('level2_button').classList.remove('active');
+                document.getElementById('level3_button').classList.remove('active');
+
+                // Activate the selected level button
+                document.getElementById(videoSrc + '_button').classList.add('active');
+
+                // Update current level
+                currentLevel = videoSrc;
+
+                // Show sub-buttons
+                document.getElementById('subButtons').style.display = 'block';
+
+                // Default to 'train' video when switching level
+                switchSubVideo('train');
+            }
+
+            function switchSubVideo(subType) {
+                const videoPlayer = document.getElementById('videoPlayer');
+                videoPlayer.src = `./static/videos/${currentLevel}_${subType}.mp4`; // Combine level and sub-type
+                videoPlayer.play(); // Play automatically when the video is switched
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+<hr>
+
+<!-- Dataset Visualization -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Dataset Visualization</h2>
+        <!-- <center> -->
+          <!-- This image is always visible  -->
+          <div id="Dataset Visualization">
+            <img src="./static/images/COLMAP visualization.png" style="width: 45vw; min-width: 330px;" alt="Overview Image"> 
+            <figcaption style="text-align: left; margin-top: 10px;">
+              <strong>Dataset distribution</strong>. Our dataset comprises <strong>90,810</strong> frames distributed over <strong>104</strong> cases, capturing a diverse array of multi-traversal paths and multi-agent interactions across varying difficulty levels.
+            </figcaption>
+          </div>
+
+          <!-- Here, the changeContent's parameter is just the number of the button. Has no intrinsic association with the content -->
+          <!-- <button id="method_button1" class="btn" onclick="changeContent(1)">1. Robust Global Shape Representation</button>
+          <button id="method_button2" class="btn" onclick="changeContent(2)">2. Active Touch Selection</button>
+          <button id="method_button3" class="btn" onclick="changeContent(3)">3. Local Geometric Optimization</button>
+
+          <div class="content has-text-justified">
+            <p id="text-content"> <b>1.1 Hybrid Structure Priors:</b> 
+              <br><b>(1) Visual Hull:</b> After taking sparse view images, we use GPT-4o to classify the centric object. The classification label is fed to <a href=\"https://github.com/IDEA-Research/Grounded-SAM-2\">Grounded SAM 2</a> to acquire the masks of the object. The masks along with the camera poses recorded by the robot are used to estimate the <b>visual hull</b>. This method is robust against traditionally challenging surfaces and materials
+              <br><b>(2) Metric Depth Estimator:</b> For every sparse view RGB image, we use <a href=\"https://jugghm.github.io/Metric3Dv2/\">Metric3D v2</a> to estimate the depth. We do not use the more accurate depth captured by our <a href=\"https://www.intelrealsense.com/depth-camera-d405/\">RealSense</a> camera because we found estimated depth smoother and less noisy. 
+              <br><b>(3) Gaussians Initialization:</b> The visual hull and estimated depth are combined to initialize the 3D Gaussian Primitives.  
+              <br><br><b>1.2 Hull Pruning:</b> 
+              <br><b>(4) Visual Hull Pruning:</b> During training, we design a "shell" around the visual hull to remove floaters around it. Empircally, we notice that those floaters around objects, while small at first, often snowball to very large negative impact on the overall reconstruction quality. 
+              <br><b>(5) Supervision:</b> We then use RGB-D images captured by our RealSense camera and normals estimated from <a href=\"https://baegwangbin.github.io/DSINE/\">DSINE</a> to supervise the subsequent training. 
+            </p>
+            <center>
+              <img id="image-content" src="./static/images/Method_1.png" style="width: 45vw; min-width: 330px;" />
+            </center>
+          </div> -->
+        <!-- </center> -->
+
+        <!-- <script>
+          document.getElementById('method_button1').classList.add('active');
+          function changeContent(buttonNumber) {
+              const textElement = document.getElementById('text-content');
+              const imageElement = document.getElementById('image-content');
+              
+              document.getElementById('method_button1').classList.remove('active');
+              document.getElementById('method_button2').classList.remove('active');
+              document.getElementById('method_button3').classList.remove('active');
+
+              // Add 'active' class to the clicked button so that it will have a different color when its content is present
+              document.getElementById('method_button' + buttonNumber).classList.add('active');
+
+              if (buttonNumber === 1) {
+                  textElement.innerHTML = "<b>1.1 Hybrid Structure Priors:</b> \
+                                           <br><b>(1) Visual Hull:</b> After taking sparse view images, we use GPT-4o to classify the centric object. The classification label is fed to <a href=\"https://github.com/IDEA-Research/Grounded-SAM-2\">Grounded SAM 2</a> to acquire the masks of the object. The masks along with the camera poses recorded by the robot are used to estimate the <b>visual hull</b>. This method is robust against traditionally challenging surfaces and materials \
+                                           <br><b>(2) Metric Depth Estimator:</b> For every sparse view RGB image, we use <a href=\"https://jugghm.github.io/Metric3Dv2/\">Metric3D v2</a> to estimate the depth. We do not use the more accurate depth captured by our <a href=\"https://www.intelrealsense.com/depth-camera-d405/\">RealSense</a> camera because we found estimated depth smoother and less noisy \
+                                           <br><b>(3) Gaussians Initialization:</b> The visual hull and estimated depth are combined to initialize the 3D Gaussian Primitives.  \
+                                           <br><br><b>1.2 Hull Pruning:</b> \
+                                           <br><b>(4) Visual Hull Pruning:</b> During training, we design a \"shell\" around the visual hull to remove floaters around it. Empircally, we notice that those floaters around objects, while small at first, often snowball to very large negative impact on the overall reconstruction quality. \
+                                           <br><b>(5) Supervision:</b> We then use RGB-D images captured by our RealSense camera and normals estimated from <a href=\"https://baegwangbin.github.io/DSINE/\">DSINE</a> to supervise the subsequent training. \
+                                           ";
+                  imageElement.classList.remove('hidden');
+                  imageElement.src = "./static/images/Method_1.png";
+                  // imageElement.alt = "Image 1";
+              } else if (buttonNumber === 2) {
+                  textElement.innerHTML = "<b>2.1 Geometry Ranking:</b> \
+                                           <br><b>(1) High Gradient Points:</b> By design, in 3D Gaussian Splatting training, points with high gradient indicate rapid changes in spatial/geometric features and larger discrepancies between the rendering and the ground truth image, which means a need for further optimization. \
+                                           Therefore, we select a few clusters of points with high gradients as seen in <i>Rabbit 3</i>.\
+                                           <br><br><b>2.2 Common-Sense Reranking:</b> \
+                                           <br><b>(2) Semantic Grounding:</b> In the first step, along with classification, we also asked GPT-4o to give us a list of parts of this object. Using zero-shot open-vocabulary part segmentation model such as <a href=\"https://arxiv.org/abs/2212.01558\">PartSLIP</a>, we can ground such semantic information to our reconstruction, as can be seen in <i>Rabbit 2</i>.\
+                                           <br><b>(3) Commen-Sense Ranking:</b> We then ask GPT-4o which part should have priority when it comes to touching.  \
+                                           Then, without violating the geometric ranking, we rank the points within the same cluster based on their part priority. This ensures that even if the part segmentation fails, the robot will still have points to touch, as seen in <i>Rabbit 4</i>";
+                  imageElement.classList.remove('hidden');
+                  imageElement.src = "./static/images/Method_2.png";
+                  // imageElement.alt = "Image 2";
+              } else if (buttonNumber === 3) {
+                  textElement.innerHTML = "<b>3.1 Touch Transform:</b> \
+                                           <br><b>(1) Touch Patch Transformation:</b> Based on photometric stereo, we can acquire depth and normal of the touch spot, which gives us a dense point cloud. \
+                                           <br><br><b>3.2 Anchor Gaussian Optimization:</b> \
+                                           <br><b>(2) Anchor Gaussian Points:</b> The dense point cloud are added as anchor Gaussian points.\
+                                           <br><b>(3) Optimization:</b> We then apply Gaussian normal supervision to further optimize the 3D Gaussians.";
+                  imageElement.classList.add('hidden');
+                                           // imageElement.src = "image3.jpg";
+                  // imageElement.alt = "Image 3";
+              }
+          }
+        </script> -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Video Comparison -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Baseline Comparison</h2>
+        <div class="content has-text-justified">
+          <center>
+            <!-- Level Buttons with Sub-buttons -->
+            <div class="level-buttons">
+              <!-- Level 1 -->
+              <div class="level-group">
+                <button class="btn level-btn" id="level1_button" onclick="switchLevel('level1')">Level 1</button>
+                <div class="sub-buttons" id="level1_sub_buttons" style="display: none;">
+                  <button class="btn sub-btn" id="level1_train_button" onclick="switchVideo('level1', 'train')">Train</button>
+                  <button class="btn sub-btn" id="level1_test_button" onclick="switchVideo('level1', 'test')">Test</button>
+                </div>
+              </div>
+              <!-- Level 2 -->
+              <div class="level-group">
+                <button class="btn level-btn" id="level2_button" onclick="switchLevel('level2')">Level 2</button>
+                <div class="sub-buttons" id="level2_sub_buttons" style="display: none;">
+                  <button class="btn sub-btn" id="level2_train_button" onclick="switchVideo('level2', 'train')">Train</button>
+                  <button class="btn sub-btn" id="level2_test_button" onclick="switchVideo('level2', 'test')">Test</button>
+                </div>
+              </div>
+              <!-- Level 3 -->
+              <div class="level-group">
+                <button class="btn level-btn" id="level3_button" onclick="switchLevel('level3')">Level 3</button>
+                <div class="sub-buttons" id="level3_sub_buttons" style="display: none;">
+                  <button class="btn sub-btn" id="level3_train_button" onclick="switchVideo('level3', 'train')">Train</button>
+                  <button class="btn sub-btn" id="level3_test_button" onclick="switchVideo('level3', 'test')">Test</button>
+                </div>
+              </div>
+            </div>
+            <br><br>
+            <!-- Level Descriptions -->
+            <div id="levelDescription" class="level-description has-text-centered">
+              <p>Translation-only experiment uses train and test traversal on different lanes.</p>
+            </div>
+            <!-- Video Player -->
+            <video muted autoplay loop style="height: 1200px; width: auto;" controls id="videoPlayer">
+              <source src="./static/videos/level1_train.mp4" type="video/mp4">
+            </video>
+          </center>
+          <!-- JavaScript -->
+          <script>
+            // Initialize: Show Level 1 sub-buttons and set active states
+            document.getElementById('level1_sub_buttons').style.display = 'block';
+            document.getElementById('level1_button').classList.add('active');
+            document.getElementById('level1_train_button').classList.add('active');
+
+            // Level descriptions
+            const levelDescriptions = {
+              level1: "Translation-only experiment uses train and test traversal on different lanes.",
+              level2: "Rotation-only uses the first three and the last three cameras for training, and two side cameras for testing.",
+              level3: "Translation + rotation experiment uses train and test traversals with significantly different trajectories."
+            };
+            function switchLevel(level) {
+              // Update level description
+              const descriptionDiv = document.getElementById('levelDescription');
+              descriptionDiv.innerHTML = `<p>${levelDescriptions[level]}</p>`;
+
+              // Hide all sub-buttons
+              document.querySelectorAll('.sub-buttons').forEach(function(subButtons) {
+                subButtons.style.display = 'none';
+              });
+              // Remove 'active' class from all level buttons
+              document.querySelectorAll('.level-btn').forEach(function(btn) {
+                btn.classList.remove('active');
+              });
+              // Add 'active' class to the selected level button
+              document.getElementById(level + '_button').classList.add('active');
+              // Show sub-buttons for the selected level
+              document.getElementById(level + '_sub_buttons').style.display = 'block';
+              // Reset sub-button active states
+              document.querySelectorAll('.sub-btn').forEach(function(btn) {
+                btn.classList.remove('active');
+              });
+              // Set default sub-button as active
+              var defaultSubBtn = document.getElementById(level + '_train_button');
+              defaultSubBtn.classList.add('active');
+              // Switch to the default video
+              switchVideo(level, 'train');
+            }
+
+            function switchVideo(level, type) {
+              // Remove 'active' class from all sub-buttons
+              document.querySelectorAll('.sub-btn').forEach(function(btn) {
+                btn.classList.remove('active');
+              });
+              // Add 'active' class to the selected sub-button
+              document.getElementById(level + '_' + type + '_button').classList.add('active');
+              // Update video source
+              const videoPlayer = document.getElementById('videoPlayer');
+              videoPlayer.src = './static/videos/' + level + '_' + type + '.mp4';
+              videoPlayer.play();
+            }
+          </script>
+          <!-- Add CSS for button styles if necessary -->
+          <style>
+            .btn.active {
+              background-color: #3273dc;
+              color: white;
+            }
+            .level-buttons {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .level-group {
+              margin: 0 10px;
+              text-align: center;
+            }
+            .sub-buttons {
+              margin-top: 5px;
+            }
+            .sub-btn {
+              margin-top: 5px;
+              width: 100px;
+            }
+            .level-description {
+              margin-bottom: 15px;
+              font-size: 1.2em;
+            }
+          </style>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <hr> -->
+
+<!-- Videos -->
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Videos</h2>
+        <div class="content has-text-justified"> -->
+          <!-- <p>
+          1. <b>Robust Global Shape Representation:</b> Visual hull and depth estimated from foundation models initiates 3D Gaussians. RGB-D images and foundation-model-estimated normals are used to supervise subsequent training.
+          </p>
+          <p>
+          2. <b>Active Touch Selection:</b> Geometric properties and common-sense from VLM guide the robot to touch the most informative regions.
+          </p>
+          <p>
+          3. <b>Local Geometric Optimization:</b> Add tactile readings as new anchor Gaussian points to improve the original 3D Gaussians.
+          </p> -->
+        <!-- </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- Results Comparison across Different Levels -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        
+        <h2 class="title is-3">Results Comparison across Different Levels</h2>
+        <div id="Dataset ">
+          <img src="./static/images/Results comparison.png" style="width: 45vw; min-width: 330px;" alt="Overview Image"> 
+          <figcaption style="text-align: left; margin-top: 10px;">
+            <strong>Qualitative and quantitative results across three difficulty levels.</strong> The results show a clear degradation in performance as the difficulty level increases, highlighting the challenge of maintaining consistency and realism in complex urban scenarios.
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX"> 
+  <div class="container is-max-desktop content">
+    <center>
+    <h2 id="bibtexTitle" class="title">BibTeX</h2>
+    <button id="copyButton" onclick="copyToClipboard()">
+      <i class="fas fa-copy"></i>
+    </button>
+    <br>
+    <pre style="display: inline-flex; text-align: left";><code id="bibtexInfo">
+Coming Soon
+      </code>
+    </pre>
+  </center>
+  </div>
+</section>
+          
+<!-- Acknowledgements   -->
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    Jing Zhang and Chen Feng are the corresponding authors. The work was supported in part through NSF grants 2024882, 2152565, and 2238968.
+  </div>
+</section>
+          
+<!-- Footer -->       
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.<br>
+            This AI4CE template is created by <a href="https://irvingf7.github.io/">Irving Fang</a>.<br>
+            This webpage template is originally from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template.
+            This website is then inspired by the project page of <a href="https://cat3d.github.io/">CAT3D</a>, <a href="https://armlabstanford.github.io/touch-gs">Touch-GS</a> and <a href="https://baegwangbin.github.io/DSINE/">DSINE</a>.
+          </p>
+        </div>
+      </div>
+          </p>
+        </div>
+      </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
