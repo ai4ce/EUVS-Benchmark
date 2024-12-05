@@ -21,10 +21,11 @@ Photorealistic simulators are essential for the training and evaluation of visio
 If you find this project useful in your research, please consider cite:
 
 ```BibTeX
-@article{cheng2024gaussianpro,
-  title={GaussianPro: 3D Gaussian Splatting with Progressive Propagation},
-  author={Cheng, Kai and Long, Xiaoxiao and Yang, Kaizhi and Yao, Yao and Yin, Wei and Ma, Yuexin and Wang, Wenping and Chen, Xuejin},
+
+@article{han2024euvs,
+  title={Extrapolated Urban View Synthesis Benchmark}, 
+  author={Xiangyu Han and Zhen Jia and Li, Boyi and Wang, Yan and Ivanovic, Boris and You, Yurong and Liu, Lingjie and Wang, Yue and Pavone, Marco and Feng, Chen and Li, Yiming},
   journal={arXiv preprint arXiv:},
-  year={2025}
+  year={2025},
 }
 ```
