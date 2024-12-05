@@ -24,7 +24,7 @@ If you find this project useful in your research, please consider cite:
 
 @article{han2024euvs,
   title={Extrapolated Urban View Synthesis Benchmark}, 
-  author={Xiangyu Han and Zhen Jia and Li, Boyi and Wang, Yan and Ivanovic, Boris and You, Yurong and Liu, Lingjie and Wang, Yue and Pavone, Marco and Feng, Chen and Li, Yiming},
+  author={Xiangyu Han and Zhen Jia and Boyi Li and Yan Wang and Boris Ivanovic and Yurong You and Lingjie Liu and Yue Wang and Marco Pavone and Chen Feng and Yiming Li},
   journal={arXiv preprint arXiv:},
   year={2025},
 }
