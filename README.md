@@ -15,7 +15,7 @@
     </video> -->
     <img src="./assets/Teaser.png" alt="example" width=100%>
     <br>
-    <em>TLDR: We make camera localization more generalizable by addressing the data gap via 3DGS and learning gap via a two-branch joint learning with adversarial loss, achieving localization accuracy surpassing 1cm/0.3° in indoor scenarios, 20cm/0.5° in outdoor scenarios, and 10cm/0.2° in driving scenarios.</em>
+    <em>TLDR: We provide a novel dataset for extrapolated urban view synthesis, consisting of 90,810 frames across 345 videos. This dataset provides ground truth images for qualitative testing, addressing missing data issues. Additionally, we introduce a structured evaluation framework with categorized difficulty levels, facilitating robust assessment of extrapolated view synthesis.</em>
 </p>
 
 
