@@ -382,20 +382,20 @@
             <!-- Video Player Section -->
             <div class="video-container" style="display: flex; justify-content: space-around; margin-top: 20px;">
               <!-- Train Video -->
-              <div style="width: 47%;">
+              <div id="trainVideoContainer" style="width: 47%;"> <!-- Add id here -->
                 <h3 class="has-text-centered">Train</h3>
                 <video muted autoplay loop style="width: 100%;" controls id="trainVideoPlayer">
                   <source src="./static/videos/level1_train_location1.mp4" type="video/mp4">
                 </video>
               </div>
               <!-- Test Video -->
-              <div style="width: 47%;">
+              <div id="testVideoContainer" style="width: 47%;"> <!-- Add id here -->
                 <h3 class="has-text-centered">Test</h3>
                 <video muted autoplay loop style="width: 100%;" controls id="testVideoPlayer">
                   <source src="./static/videos/level1_test_location1.mp4" type="video/mp4">
                 </video>
               </div>
-            </div>  
+            </div>
           </center>
           <!-- JavaScript -->
           <script>
