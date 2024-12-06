@@ -89,7 +89,7 @@
         </a>
 
         <!-- usc Logo -->
-        <a class="navbar-item" href="https://www.stanford.edu/" target="_blank" style="padding: 0;">
+        <a class="navbar-item" href="https://www.usc.edu/" target="_blank" style="padding: 0;">
           <img src="./static/images/usc.png" alt="USC Logo" style="height: 2.0rem; max-width: none;">
         </a>
       </div>
@@ -420,6 +420,15 @@
               document.getElementById(level + '_button').classList.add('active');
               // Switch videos based on current level and location
               switchVideo();
+
+              if (level === 'level2') {
+                document.getElementById('trainVideoContainer').style.width = '60%';
+                document.getElementById('testVideoContainer').style.width = '40%';
+              } else {
+                // Reset to default width for other levels
+                document.getElementById('trainVideoContainer').style.width = '45%';
+                document.getElementById('testVideoContainer').style.width = '45%';
+              }
             }
 
             function switchVideo() {
