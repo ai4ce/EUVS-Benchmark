@@ -17,6 +17,7 @@ for item in data:
     # 白色和灰色的RGB值都在较高范围内
     r, g, b, a = item
     if r in range(200, 256) and g in range(200, 256) and b in range(200, 256):
+        print("1")
         new_data.append((255, 255, 255, 0))  # 白色和灰色变为透明
     else:
         new_data.append(item)  # 保留其他颜色
