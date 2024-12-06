@@ -263,6 +263,7 @@
   </div>
 </section> -->
 
+
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -357,7 +358,7 @@
         <h2 class="title is-3 has-text-centered">Baseline Comparison Video</h2>
         <div class="content has-text-justified">
           <center>
-            Level Buttons
+            <!-- Level Buttons -->
             <div class="level-buttons">
               <button class="btn level-btn active" id="level1_button" onclick="switchLevel('level1')">Level 1</button>
               <button class="btn level-btn" id="level2_button" onclick="switchLevel('level2')">Level 2</button>
@@ -381,14 +382,14 @@
             <!-- Video Player Section -->
             <div class="video-container" style="display: flex; justify-content: space-around; margin-top: 20px;">
               <!-- Train Video -->
-              <div style="width: 45%;">
+              <div style="width: 47%;">
                 <h3 class="has-text-centered">Train</h3>
                 <video muted autoplay loop style="width: 100%;" controls id="trainVideoPlayer">
                   <source src="./static/videos/level1_train_location1.mp4" type="video/mp4">
                 </video>
               </div>
               <!-- Test Video -->
-              <div style="width: 45%;">
+              <div style="width: 47%;">
                 <h3 class="has-text-centered">Test</h3>
                 <video muted autoplay loop style="width: 100%;" controls id="testVideoPlayer">
                   <source src="./static/videos/level1_test_location1.mp4" type="video/mp4">
@@ -426,8 +427,8 @@
                 document.getElementById('testVideoContainer').style.width = '40%';
               } else {
                 // Reset to default width for other levels
-                document.getElementById('trainVideoContainer').style.width = '45%';
-                document.getElementById('testVideoContainer').style.width = '45%';
+                document.getElementById('trainVideoContainer').style.width = '47%';
+                document.getElementById('testVideoContainer').style.width = '47%';
               }
             }
 
@@ -500,9 +501,9 @@
         
         <h2 class="title is-3">Radar Chart of Baseline Comparison</h2>
         <div id="Dataset ">
-          <embed src="./static/images/Level1_baseline_radar.png" style="display: block; margin: auto; width: 100%; max-width: 1000px;" alt="Overview Image"> 
-          <embed src="./static/images/Level2_baseline_radar.png" style="display: block; margin: auto; width: 100%; max-width: 1000px;" alt="Overview Image"> 
-          <embed src="./static/images/Level3_baseline_radar.png" style="display: block; margin: auto; width: 100%; max-width: 1000px;" alt="Overview Image"> 
+          <embed src="./static/images/Level1_baseline_radar.png" style="display: block; margin: auto; width: 90%; max-width: 1000px;" alt="Overview Image"> 
+          <embed src="./static/images/Level2_baseline_radar.png" style="display: block; margin: auto; width: 90%; max-width: 1000px;" alt="Overview Image"> 
+          <embed src="./static/images/Level3_baseline_radar.png" style="display: block; margin: auto; width: 90%; max-width: 1000px;" alt="Overview Image"> 
           </div>
       </div>
     </div>
@@ -516,7 +517,7 @@
         
         <h2 class="title is-3">Baseline Comparison Table</h2>
         <div id="Dataset ">
-          <embed src="./static/images/table.png" style="display: block; margin: auto; width: 100%; max-width: 1000px;" alt="Overview Image"> 
+          <embed src="./static/images/table.jpg" style="display: block; margin: auto; width: 100%; max-width: 1000px;" alt="Overview Image"> 
           </div>
       </div>
     </div>
