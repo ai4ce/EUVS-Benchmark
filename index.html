@@ -526,6 +526,8 @@
               testVideoPlayer.src = `./static/videos/${currentLevel}_test_${location}.mp4`;
 
               // Play both videos
+              trainVideoPlayer.load();
+              testVideoPlayer.load();
               trainVideoPlayer.play();
               testVideoPlayer.play();
             }
