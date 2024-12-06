@@ -430,6 +430,8 @@
                 document.getElementById('trainVideoContainer').style.width = '47%';
                 document.getElementById('testVideoContainer').style.width = '47%';
               }
+              console.log('Train Video Container width:', trainVideoContainer.style.width);
+              console.log('Test Video Container width:', testVideoContainer.style.width);
             }
 
             function switchVideo() {
@@ -440,8 +442,6 @@
               // Update the video sources based on the current level and location
               trainVideoPlayer.src = `./static/videos/${currentLevel}_train_${location}.mp4`;
               testVideoPlayer.src = `./static/videos/${currentLevel}_test_${location}.mp4`;
-              console.log(`Train video path: ${trainVideoPath}`);
-              console.log(`Test video path: ${testVideoPath}`);
 
               // Play both videos
               trainVideoPlayer.load();
