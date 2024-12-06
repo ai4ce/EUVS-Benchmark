@@ -448,6 +448,131 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Baseline Comparison Video</h2>
+        <div class="content has-text-justified">
+          <center>
+            <!-- Level Buttons -->
+            <div class="level-buttons">
+              <button class="btn level-btn active" id="level1_button" onclick="switchLevel('level1')">Level 1</button>
+              <button class="btn level-btn" id="level2_button" onclick="switchLevel('level2')">Level 2</button>
+              <button class="btn level-btn" id="level3_button" onclick="switchLevel('level3')">Level 3</button>
+            </div>
+            <!-- Dropdown for Location -->
+            <div class="dropdowns" style="margin-top: 20px;">
+              <div style="display: inline-block;">
+                <label for="location" style="margin-right: 5px;">Location:</label>
+                <select id="location" class="dropdown" onchange="switchVideo()">
+                  <option value="location1">Location 1</option>
+                  <option value="location2">Location 2</option>
+                  <option value="location3">Location 3</option>
+                </select>
+              </div>
+            </div>
+            <!-- Level Descriptions -->
+            <div id="levelDescription" class="level-description has-text-centered" style="margin-top: 15px;">
+              <p>Translation-only experiment uses train and test traversal on different lanes.</p>
+            </div>
+            <!-- Video Player Section -->
+            <div class="video-container" style="display: flex; justify-content: space-around; margin-top: 20px;">
+              <!-- Train Video -->
+              <div style="width: 45%;">
+                <h3 class="has-text-centered">Train</h3>
+                <video muted autoplay loop style="width: 100%;" controls id="trainVideoPlayer">
+                  <source src="./static/videos/level1_train_location1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <!-- Test Video -->
+              <div style="width: 45%;">
+                <h3 class="has-text-centered">Test</h3>
+                <video muted autoplay loop style="width: 100%;" controls id="testVideoPlayer">
+                  <source src="./static/videos/level1_test_location1.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </center>
+          <!-- JavaScript -->
+          <script>
+            // Initialize: Show Level 1 as default
+            const levelDescriptions = {
+              level1: "Translation-only experiment uses train and test traversal on different lanes.",
+              level2: "Rotation-only uses the first three and the last three cameras for training, and two side cameras for testing.",
+              level3: "Translation + rotation experiment uses train and test traversals with significantly different trajectories."
+            };
+            let currentLevel = 'level1';
+
+            function switchLevel(level) {
+              currentLevel = level;
+              // Update level description
+              const descriptionDiv = document.getElementById('levelDescription');
+              descriptionDiv.innerHTML = `<p>${levelDescriptions[level]}</p>`;
+              // Update active button
+              document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
+              document.getElementById(level + '_button').classList.add('active');
+              // Switch videos based on current level and location
+              switchVideo();
+            }
+
+            function switchVideo() {
+              const location = document.getElementById('location').value;
+              const trainVideoPlayer = document.getElementById('trainVideoPlayer');
+              const testVideoPlayer = document.getElementById('testVideoPlayer');
+              
+              // Update the video sources based on the current level and location
+              trainVideoPlayer.src = `./static/videos/${currentLevel}_train_${location}.mp4`;
+              testVideoPlayer.src = `./static/videos/${currentLevel}_test_${location}.mp4`;
+
+              // Play both videos
+              trainVideoPlayer.play();
+              testVideoPlayer.play();
+            }
+
+            // Set initial video
+            switchVideo();
+          </script>
+          <!-- Add CSS for dropdowns -->
+          <style>
+            .btn.active {
+              background-color: #3273dc;
+              color: white;
+            }
+            .level-buttons {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 10px;
+            }
+            .dropdowns label {
+              font-size: 1rem;
+              vertical-align: middle;
+            }
+            .dropdown {
+              padding: 5px;
+              font-size: 1rem;
+              vertical-align: middle;
+            }
+            .level-description {
+              margin-top: 15px;
+              font-size: 1.2em;
+            }
+            .video-container {
+              display: flex;
+              justify-content: space-around;
+            }
+            video {
+              width: 100%;
+              height: auto;
+            }
+          </style>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <section class="section">
   <div class="container is-max-desktop">
