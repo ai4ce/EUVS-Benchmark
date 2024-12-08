@@ -31,6 +31,20 @@ Photorealistic simulators are essential for the training and evaluation of visio
 - [ ] Data release (Expected: December 11, 2024)
 - [ ] Code release (Expected: December 25, 2024)
 
+
+## 📊 Prepare Data
+Here are the official code links for the baseline. 
+
+- [3DGS](https://github.com/graphdeco-inria/gaussian-splatting)
+- [GaussianPro](https://github.com/kcheng1021/GaussianPro)
+- [VEGS](https://github.com/deepshwang/vegs)
+- [PGSR](https://github.com/zju3dv/PGSR)
+- [2DGS](https://github.com/hbb1/2d-gaussian-splatting)
+- [feature 3DGS](https://github.com/ShijieZhou-UCLA/feature-3dgs)
+- [Zip-NeRF](https://github.com/SuLvXiangXin/zipnerf-pytorch)
+- [instant-NGP](https://github.com/NVlabs/instant-ngp)
+
+
 ## 🖊️ Citation
 If you find this project useful in your research, please consider cite:
 
