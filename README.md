@@ -32,7 +32,7 @@ Photorealistic simulators are essential for the training and evaluation of visio
 - [ ] Code release (Expected: December 25, 2024)
 
 
-## 📊 Prepare Data
+## 📊 Baseline Code
 Here are the official code links for the baseline. 
 
 - [3DGS](https://github.com/graphdeco-inria/gaussian-splatting)
