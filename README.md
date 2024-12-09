@@ -15,7 +15,7 @@
     </video> -->
     <img src="./assets/Teaser.png" alt="example" width=100%>
     <br>
-    <em style="text-align: left;">TLDR: We provide a novel dataset for extrapolated urban view synthesis, consisting of 90,810 frames across 345 videos. This dataset provides ground truth images for qualitative testing, addressing missing data issues. Additionally, we introduce a structured evaluation framework with categorized difficulty levels, facilitating robust assessment of extrapolated view synthesis.</em>
+    <em style="text-align: left;">TLDR: We build a comprehensive real-world benchmark for quantitatively and qualitatively evaluating extrapolated novel view synthesis in large-scale urban scenes.</em>
 </p>
 
 
