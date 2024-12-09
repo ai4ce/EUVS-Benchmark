@@ -51,10 +51,13 @@ If you find this project useful in your research, please consider cite:
 
 ```BibTeX
 
-@article{han2024euvs,
-  title={Extrapolated Urban View Synthesis Benchmark}, 
-  author={Xiangyu Han and Zhen Jia and Boyi Li and Yan Wang and Boris Ivanovic and Yurong You and Lingjie Liu and Yue Wang and Marco Pavone and Chen Feng and Yiming Li},
-  journal={arXiv preprint arXiv:},
-  year={2025},
+@misc{han2024extrapolatedurbanviewsynthesis,
+      title={Extrapolated Urban View Synthesis Benchmark}, 
+      author={Xiangyu Han and Zhen Jia and Boyi Li and Yan Wang and Boris Ivanovic and Yurong You and Lingjie Liu and Yue Wang and Marco Pavone and Chen Feng and Yiming Li},
+      year={2024},
+      eprint={2412.05256},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2412.05256}, 
 }
 ```
