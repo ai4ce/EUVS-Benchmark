@@ -36,6 +36,7 @@ Photorealistic simulators are essential for the training and evaluation of visio
 Here are the official code links for the baseline. 
 
 - [3DGS](https://github.com/graphdeco-inria/gaussian-splatting)
+- [3DGM](https://github.com/NVlabs/3DGM)
 - [GaussianPro](https://github.com/kcheng1021/GaussianPro)
 - [VEGS](https://github.com/deepshwang/vegs)
 - [PGSR](https://github.com/zju3dv/PGSR)
