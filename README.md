@@ -26,6 +26,7 @@ Photorealistic simulators are essential for the training and evaluation of visio
 
 ## 🔊News
 - 2024/12/9: Our paper is now available on [arXiv](https://arxiv.org/pdf/2412.05256)!
+- 2024/12/10: Our Data is now available on [Hugging Face](https://huggingface.co/datasets/ai4ce/EUVS-Benchmark)!
 
 ## 🗓️ TODO
 - [✔] Data release
