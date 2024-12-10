@@ -28,7 +28,7 @@ Photorealistic simulators are essential for the training and evaluation of visio
 <!-- [2024.12.06] Our paper has been released on [arxiv]()! -->
 
 ## 🗓️ TODO
-- [ ] Data release (Expected: December 11, 2024)
+- [✔] Data release
 - [ ] Code release (Expected: December 25, 2024)
 
 
