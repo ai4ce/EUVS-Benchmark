@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# 输出开始信息
+echo "Starting the script..."
+
+# 定义不同的路径
+paths=(
+    /home/xiangyu/Common/EUVS_data/Level3_new/loc06
+)
+
+
+# 遍历每个路径并执行命令
+for path in "${paths[@]}"; do
+    images_path="$path/images"
+    road_mask_path="$path/dynamic_masks"
+    sky_mask_path="$path/sky_masks"
+    echo "Processing data from: $path"
+    python extract_masks.py --text-prompt "person. rider. car. truck. bus. train. motorcycle. bicycle." --input-dir $images_path --output-dir $road_mask_path
+    python extract_masks.py --text-prompt "sky." --input-dir $images_path --output-dir $sky_mask_path
+
+done
+
+
+
+# 输出结束信息
+echo "Script finished."
+ 
