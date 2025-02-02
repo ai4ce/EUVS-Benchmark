@@ -5,7 +5,7 @@ echo "Starting the script..."
 
 # 定义不同的路径
 paths=(
-    /home/xiangyu/Common/EUVS_data/Level3_new/loc06
+    "/home/xiangyu/Common/EUVS_data/Level_3_MARS/loc_06_case_1"
 )
 
 

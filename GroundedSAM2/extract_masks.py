@@ -90,7 +90,7 @@ for image_file in image_files:
 
     if len(input_boxes) == 0:
         # No objects detected, output an all-zero mask
-        mask = np.zeros((image.height, image.width), dtype=np.uint8)
+        mask = np.ones((image.height, image.width), dtype=np.uint8)* 255
         output_mask_path = OUTPUT_DIR / f"{Path(image_file).stem}.png"
         cv2.imwrite(str(output_mask_path), mask)
         print(f"No objects detected in {image_file}. Saved all-zero mask.")
