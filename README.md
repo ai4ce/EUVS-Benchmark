@@ -30,7 +30,7 @@ Photorealistic simulators are essential for the training and evaluation of visio
 
 ## 🗓️ TODO
 - [✔] Data release
-- [ ] Code release (Expected: December 25, 2024)
+- [ ] Code release (Releasing very soon)
 
 
 ## 📊 Baseline Code
