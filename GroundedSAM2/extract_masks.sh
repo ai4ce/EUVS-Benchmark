@@ -1,15 +1,11 @@
 #!/bin/bash
 
-# 输出开始信息
-echo "Starting the script..."
-
-# 定义不同的路径
+# Define the path 
 paths=(
-    "/home/xiangyu/Common/EUVS_data/Level_3_MARS/loc_06_case_1"
+    "path to the dataset"
 )
 
-
-# 遍历每个路径并执行命令
+# Extract masks for the images in the dataset
 for path in "${paths[@]}"; do
     images_path="$path/images"
     road_mask_path="$path/dynamic_masks"
@@ -21,7 +17,4 @@ for path in "${paths[@]}"; do
 done
 
 
-
-# 输出结束信息
-echo "Script finished."
  

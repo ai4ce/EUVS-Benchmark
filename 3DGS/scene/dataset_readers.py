@@ -138,7 +138,7 @@ def readColmapCameras(cam_extrinsics, cam_intrinsics, depths_params, images_fold
                                 image_path=image_path, image_name=image_name, depth_path=depth_path,
                                 width=width, height=height, is_test=image_name in test_cam_names_list,
                                 seg_mask=seg_mask)
-        elif method=='original':
+        elif method=='vanila':
             cam_info = CameraInfo(uid=uid, R=R, T=T, FovY=FovY, FovX=FovX, depth_params=depth_params,
                                 image_path=image_path, image_name=image_name, depth_path=depth_path,
                                 width=width, height=height, is_test=image_name in test_cam_names_list)
@@ -211,7 +211,7 @@ def readColmapSceneInfo(path, images, depths, eval, train_test_exp, llffhold=8, 
 
 
 
-    if eval=='original':
+    if eval=='vanila':
         if "360" in path:
             llffhold = 8
         if llffhold:

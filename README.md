@@ -28,9 +28,109 @@ Photorealistic simulators are essential for the training and evaluation of visio
 - 2024/12/9: Our paper is now available on [arXiv](https://arxiv.org/pdf/2412.05256)!
 - 2024/12/10: Our data is now available on [Hugging Face](https://huggingface.co/datasets/ai4ce/EUVS-Benchmark)!
 
+
+
+## Installation
+We used multiple models and baselines. Please refer to the original repository for installation instructions and set up the necessary environments accordingly:
+- [Ground SAM 2](https://github.com/IDEA-Research/Grounded-SAM-2)
+- [3DGS](https://github.com/graphdeco-inria/gaussian-splatting)
+
+Tip: We recommend using PyTorch 2.0.1 and CUDA 11.8 for all environments, as they work well in our implementation.
+
+## Extract Masks
+```shell
+cd GroundedSAM2
+conda activate groundsam
+
+# Extract dynamic masks
+python extract_masks.py --text-prompt "person. rider. car. truck. bus. train. motorcycle. bicycle." --input-dir <path to input_folder> --output-dir <path to output_folder>
+
+# Extract sky masks
+python extract_masks.py --text-prompt "sky." --input-dir $images_path --output-dir $sky_mask_path
+```
+
+Alternatively, you can run the Bash script [extract_masks.sh](./GroundedSAM2/extract_masks.sh) to process images across multiple folders.
+
+## Data Structure
+After extracting the masks, you'll find that the data structure is as follows:
+```
+<location>
+|---test_set.txt
+|---train_set.txt
+|---images
+|   |---<image 0>
+|   |---<image 1>
+|   |---...
+|---sparse
+    |---0
+        |---cameras.bin
+        |---images.bin
+        |---points3D.bin
+        |---sparse
+|---dynamic_masks
+|   |---<image 0>
+|   |---<image 1>
+|   |---...
+|---sky_masks
+|   |---<image 0>
+|   |---<image 1>
+|   |---...
+|---geo_registration
+|   |---geo_registration.txt
+|---poses
+|   |---images.txt
+```
+
+## Running 3DGS
+
+```shell
+# Define the path
+source_path="path/to/your/data"
+model_path="$source_path/models/3DGS"
+
+# Train 3DGS with masked dynamic objects
+python train.py -s "$source_path" -m "$model_path" --method "masked_3dgs"
+```
+Note that this command run the 3DGS with masked dynamic objects. If you want run the vanila version, please use --method "vanila"
+
+## Render
+```shell
+# Define the path
+source_path="path/to/your/data"
+model_path="$source_path/models/3DGS"
+
+# Render
+python render.py -m "$model_path"
+```
+
+
+## Evaluation
+```shell
+# Define the path
+source_path="path/to/your/data"
+model_path="$source_path/models/3DGS"
+
+# Evaluation
+python metrics_with_dyn_masks.py -s "$source_path" -m "$model_path" -e "all"
+```
+
+You can find the metrics as .txt file under the `$model_path` with a file name `test_set_results_w_mask.json` and `train_set_results_w_mask.json`. The output metrics will be like following:
+```
+{
+ "ours_30000": {
+  "SSIM": 0.7512373236681191,
+  "PSNR": 16.235809601201545,
+  "LPIPS": 0.4492570964361398,
+  "Cos_Similarity": 0.4056943528884359
+ }
+}
+```
+
+
+
 ## 🗓️ TODO
 - [✔] Data release
-- [ ] Code release (Releasing very soon)
+- [✔] Code release (Will keep updating baselines)
 
 
 ## 📊 Baseline Code
