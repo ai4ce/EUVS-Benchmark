@@ -61,7 +61,7 @@ conda activate groundsam
 python extract_masks.py --text-prompt "person. rider. car. truck. bus. train. motorcycle. bicycle." --input-dir <path to input_folder> --output-dir <path to output_folder>
 
 # Extract sky masks
-python extract_masks.py --text-prompt "sky." --input-dir $images_path --output-dir $sky_mask_path
+python extract_masks.py --text-prompt "sky." --input-dir <path to input_folder> --output-dir <path to output_folder>
 ```
 
 Alternatively, you can run the Bash script [extract_masks.sh](./GroundedSAM2/extract_masks.sh) to process images across multiple folders.
