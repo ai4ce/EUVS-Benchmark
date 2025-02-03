@@ -6,3 +6,4 @@ diff_rasterization/diff_rast.egg-info
 diff_rasterization/dist
 tensorboard_3d
 screenshots
+colmap_process/vocab_tree_flickr100K_words256K.bin
