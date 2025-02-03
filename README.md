@@ -18,7 +18,7 @@
 *equal contribution
 
 <a href="https://arxiv.org/pdf/2412.05256"><img src='https://img.shields.io/badge/arXiv-EUVS -red' alt='Paper PDF'></a>
-<a href='https://ai4ce.github.io/EUVS-Benchmark/'><img src='https://img.shields.io/badge/Project_Page-EUVS-green' alt='Project Page'></a>
+<a href='https://ai4ce.github.io/EUVS-Benchmark/'><img src='https://img.shields.io/badge/Project_Page-EUVS-blue' alt='Project Page'></a>
 <a href='https://huggingface.co/datasets/ai4ce/EUVS-Benchmark'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow'></a>
 </div>
 
