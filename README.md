@@ -96,7 +96,7 @@ After extracting the masks, you'll find that the data structure is as follows:
 |   |---images.txt
 ```
 
-## Running 3DGS
+## Run 3DGS
 
 ```shell
 # Define the path
