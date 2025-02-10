@@ -81,7 +81,6 @@ After extracting the masks, you'll find that the data structure is as follows:
         |---cameras.bin
         |---images.bin
         |---points3D.bin
-        |---sparse
 |---dynamic_masks
 |   |---<image 0>
 |   |---<image 1>
