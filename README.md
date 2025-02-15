@@ -9,7 +9,7 @@
 <br>
 [**Marco Pavone**](https://web.stanford.edu/~pavone/)<sup>2, 5</sup> , [**Chen Feng**](https://scholar.google.com/citations?user=YeG8ZM0AAAAJ)<sup>1</sup> , [**Yiming Li**](https://yimingli-page.github.io/)<sup>1, 2</sup>
 
-<sup>1</sup>New Yor University&emsp;&emsp;&emsp;<sup>2</sup>NVIDIA &emsp;&emsp;&emsp;
+<sup>1</sup>New York University&emsp;&emsp;&emsp;<sup>2</sup>NVIDIA &emsp;&emsp;&emsp;
 <sup>3</sup>University of Pennsylvania&emsp;&emsp;&emsp;
 <br>
 <sup>4</sup>University of South California &emsp;&emsp;&emsp;
