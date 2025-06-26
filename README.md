@@ -2,24 +2,19 @@
 
 
 <div align="center">
-<h1>Extrapolated Urban View Synthesis Benchmark</h1>
+  <h1>Extrapolated Urban View Synthesis Benchmark</h1>
+  <h3>(ICCV 2025)</h3>
 
-[**Xiangyu Han**](https://han-xiangyu.github.io/)<sup>1, 3\*</sup> , [**Zhen Jia**](https://valentina0127.github.io/)<sup>1\*</sup> , [**Boyi Li**](https://sites.google.com/site/boyilics/)<sup>2</sup> , [**Yan Wang**](https://www.cs.cornell.edu/~yanwang/)<sup>2</sup><br>
-[**Boris Ivanovic**](https://www.borisivanovic.com/)<sup>2</sup> , [**Yurong You**](https://yurongyou.com/)<sup>2</sup> , [**Lingjie Liu**](https://lingjie0206.github.io/)<sup>3</sup> , [**Yue Wang**](https://yuewang.xyz/)<sup>2, 4</sup>
-<br>
-[**Marco Pavone**](https://web.stanford.edu/~pavone/)<sup>2, 5</sup> , [**Chen Feng**](https://scholar.google.com/citations?user=YeG8ZM0AAAAJ)<sup>1</sup> , [**Yiming Li**](https://yimingli-page.github.io/)<sup>1, 2</sup>
+  <!-- 下面保持原有作者列表和链接 -->
+  [**Xiangyu Han**](https://han-xiangyu.github.io/)<sup>1, 3\*</sup> , [**Zhen Jia**](https://valentina0127.github.io/)<sup>1\*</sup> , …  
+  <br>
+  <sup>1</sup>New York University   <sup>2</sup>NVIDIA   <sup>3</sup>University of Pennsylvania  
+  <br>
+  *equal contribution
 
-<sup>1</sup>New York University&emsp;&emsp;&emsp;<sup>2</sup>NVIDIA &emsp;&emsp;&emsp;
-<sup>3</sup>University of Pennsylvania&emsp;&emsp;&emsp;
-<br>
-<sup>4</sup>University of South California &emsp;&emsp;&emsp;
-<sup>5</sup>Stanford University
-<br>
-*equal contribution
-
-<a href="https://arxiv.org/pdf/2412.05256"><img src='https://img.shields.io/badge/arXiv-EUVS -red' alt='Paper PDF'></a>
-<a href='https://ai4ce.github.io/EUVS-Benchmark/'><img src='https://img.shields.io/badge/Project_Page-EUVS-blue' alt='Project Page'></a>
-<a href='https://huggingface.co/datasets/ai4ce/EUVS-Benchmark'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow'></a>
+  <a href="https://arxiv.org/pdf/2412.05256"><img src="https://img.shields.io/badge/arXiv-EUVS-red" alt="Paper PDF"></a>
+  <a href="https://ai4ce.github.io/EUVS-Benchmark/"><img src="https://img.shields.io/badge/Project_Page-EUVS-blue" alt="Project Page"></a>
+  <a href="https://huggingface.co/datasets/ai4ce/EUVS-Benchmark"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow" alt="Dataset"></a>
 </div>
 
 ## 

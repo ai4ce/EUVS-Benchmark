@@ -231,6 +231,19 @@ def evaluate(model_paths, source_paths, eval_type, VISUALIZE):
                                                     "PSNR": sum(psnrs) / len(psnrs),
                                                     "LPIPS": sum(lpipss) / len(lpipss),
                                                     "Cos_Similarity": sum(cos_sims) / len(cos_sims)})
+                ssim_val = full_dict[scene_dir][method]["SSIM"]
+                psnr_val = full_dict[scene_dir][method]["PSNR"]
+                lpips_val = full_dict[scene_dir][method]["LPIPS"]
+                cos_val = full_dict[scene_dir][method]["Cos_Similarity"]
+                final_score = (
+                    0.25 * ssim_val +
+                    0.15 * psnr_val +
+                    0.35 * (1 - lpips_val) +
+                    0.25 * cos_val
+                )
+
+                # Final score
+                full_dict[scene_dir][method]["Final_Score"] = final_score
 
             with open(scene_dir + json_path, 'w') as fp:
                 json.dump(full_dict[scene_dir], fp, indent=True)
