@@ -2,7 +2,7 @@
 
 
 <div align="center">
-<h1>Extrapolated Urban View Synthesis Benchmark <br> (ICCV2025)</h1>
+<h1>Extrapolated Urban View Synthesis Benchmark <br> ICCV2025</h1>
 
 [**Xiangyu Han**](https://han-xiangyu.github.io/)<sup>1, 3\*</sup> , [**Zhen Jia**](https://valentina0127.github.io/)<sup>1\*</sup> , [**Boyi Li**](https://sites.google.com/site/boyilics/)<sup>2</sup> , [**Yan Wang**](https://www.cs.cornell.edu/~yanwang/)<sup>2</sup><br>
 [**Boris Ivanovic**](https://www.borisivanovic.com/)<sup>2</sup> , [**Yurong You**](https://yurongyou.com/)<sup>2</sup> , [**Lingjie Liu**](https://lingjie0206.github.io/)<sup>3</sup> , [**Yue Wang**](https://yuewang.xyz/)<sup>2, 4</sup>
